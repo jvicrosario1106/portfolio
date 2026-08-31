@@ -92,6 +92,11 @@
   display: none;
 }
 
+.mobile-nav,
+.mobile-nav__backdrop {
+  display: none;
+}
+
 .site-footer {
   background: $surface;
   border-top: 1px solid rgba($outline, 0.5);
@@ -115,6 +120,8 @@
 
 .site-footer__links {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 28px;
 
   a {
@@ -960,6 +967,66 @@
 
   .icon-button--mobile {
     display: inline-grid;
+  }
+
+  .mobile-nav__backdrop {
+    display: block;
+    position: fixed;
+    inset: $header-height 0 0;
+    border: 0;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+  }
+
+  .mobile-nav {
+    display: block;
+    position: fixed;
+    inset: $header-height 0 auto;
+    background: $surface;
+    border-inline: 0;
+    border-top: 0;
+    border-bottom: 1px solid rgba($outline, 0.5);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      transform 220ms ease,
+      opacity 220ms ease,
+      visibility 220ms ease;
+
+    &.is-open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+
+  .mobile-nav__inner {
+    display: flex;
+    flex-direction: column;
+    padding-block: 20px 28px;
+  }
+
+  .mobile-nav__link {
+    @include label;
+    display: block;
+    padding: 16px 0;
+    color: $text-muted;
+    text-decoration: none;
+    border-bottom: 1px solid rgba($outline, 0.45);
+    transition: color 180ms ease;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    &:hover,
+    &.is-active {
+      color: $text;
+    }
   }
 
   .brand span {
