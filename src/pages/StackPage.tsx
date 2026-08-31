@@ -7,7 +7,7 @@ export function StackPage() {
     <div className="page">
       <div className="container">
         <PageIntro
-          eyebrow="Capability Matrix"
+          eyebrow="Capability"
           title="Engineering"
           accent="Stack"
           description="A structured breakdown of the tools and platforms I use across frontend, backend, AI systems, cloud infrastructure, automation, and developer workflows."
